@@ -42,9 +42,9 @@ app.post('/add-player', (req, res) => {
         if (err) throw err;
         var dbo = db.db("sports");
         if(req.body.name && req.body.avg){
-            dbo.collection("playerData").insertOne({id : parseInt(Math.random() * 100, 10),name : req.body.name,average : parseInt(req.body.avg)} , function(err, response) {
+            dbo.collection("playerData").insertOne({id : parseInt(Math.random() * 100000, 10),name : req.body.name,average : parseInt(req.body.avg)} , function(err, response) {
             if (err) res.send({'code':503, 'message':'Please try after sometime!', 'data': []});;
-                res.send({'code':200, 'message': 'Successfully added player!', 'data': []});
+                res.send({'code':201, 'message': 'Successfully added player!', 'data': []});
               });
             }else{
                 res.send({'code':400, 'message': 'All fields are necessary!', 'data': []});
